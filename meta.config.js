@@ -12,7 +12,7 @@ const metadata = {
   namespace: `https://github.com/${author}`,
   description,
   author,
-  match: ['*://*/*'],
+  match: ['https://www.imdb.com/name/*/'],
   grant: [
     // Next 5 functions are needed for the options library
     // 'GM.deleteValue',
@@ -34,14 +34,14 @@ const metadata = {
     `https://github.com/${author}/${name}/raw/main/lib/gm-fetch.js`,
     // `https://github.com/${author}/${name}/raw/main/lib/gm-webext-pref.js`,
   ],
-  'run-at': 'document-start',
+  'run-at': 'document-end',
   noframes: '',
   compatible: ['edge Violentmonkey', 'chrome Violentmonkey'],
   // supportURL: `https://github.com/${author}/${name}/issues`,
   homepageURL: `https://github.com/${author}/${name}`,
   // updateURL: `https://github.com/${author}/${name}/raw/main/dist/${name}.meta.js`,
   // downloadURL: `https://github.com/${author}/${name}/raw/main/dist/${name}.user.js`,
-  icon: 'https://www.google.com/s2/favicons?sz=64&domain=violentmonkey.github.io',
+  icon: 'https://www.google.com/s2/favicons?sz=64&domain=www.imdb.com',
   license,
 };
 

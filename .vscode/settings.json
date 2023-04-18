@@ -2,22 +2,26 @@
   "files.exclude": {
     // ".vscode/": true,
     "node_modules": true,
-    "src/icons": true,
-    "src/html": true,
-    "src/scss": true
+    "src/icons": true
+    // "src/html": true,
+    // "src/scss": true
   },
   "cSpell.words": [
     "cssnano",
     "Elems",
     "htmlmin",
+    "Jenie",
     "Minifing",
+    "nocheck",
     "Rollup",
+    "testid",
     "userscript",
     "Violentmonkey",
     "webext"
   ],
   "git.enabled": false,
   "npm-scripts.showStartNotification": false,
+  // "js/ts.implicitProjectConfig.checkJs": false,
 
   // updated 2022-12-21 10:06
   // https://github.com/antfu/vscode-file-nesting-config

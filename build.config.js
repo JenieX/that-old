@@ -14,12 +14,12 @@ module.exports = {
    * with `css` extensions. This option is ignored when `cssSupport`
    * is disabled.
    */
-  cssMinify: true,
+  cssMinify: false,
 
   /**
    * If enabled, `html` files located at `./src/html` folder, will be minified.
    * These minified `html` files will be saved at `./dist` folder, and can be
    * included in any of the `js` files later, by their original names.
    */
-  htmlMinify: false,
+  htmlMinify: true,
 };
