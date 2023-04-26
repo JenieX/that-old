@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
 // alert();
 // https://www.imdb.com/name/nm2032150/bio
 
@@ -51,8 +53,9 @@ function verifyDate(date) {
 
 function extractDate(element) {
   // console.log(element.firstElementChild);
-  const date = element.firstElementChild.textContent;
-  // console.log(date);
+  const date =
+    element.lastElementChild.firstElementChild.firstElementChild.textContent;
+  console.log(date);
   verifyDate(date);
   return [new Date(date), date];
 }
@@ -63,10 +66,11 @@ function extractDate(element) {
 // }
 
 function extractPlace(element) {
-  if (element.firstElementChild === element.lastElementChild) {
-    return null;
-  }
-  return element.lastElementChild.textContent;
+  // if (element.firstElementChild === element.lastElementChild) {
+  //   return null;
+  // }
+  return element.lastElementChild.firstElementChild.lastElementChild
+    .firstElementChild.textContent;
 }
 
 async function getBioPage(actorID) {
@@ -83,8 +87,8 @@ function isActorDead(element) {
   return element.querySelector(DEATH_INFO_SELECTOR).textContent === 'Died';
 }
 
-async function getActorInfo(actorID) {
-  const documentX = await getBioPage(actorID);
+async function getActorInfo() {
+  // const documentX = await getBioPage(actorID);
 
   // const infoSelector = '#overviewTable > tbody';
   // const infoSelector = 'section.ipc-page-section.ipc-page-section--base';
@@ -93,18 +97,24 @@ async function getActorInfo(actorID) {
   // console.log({ infoEl: infoElementX });
 
   //
-  const isDeadActor = isActorDead(documentX);
-  if (isDeadActor) {
-    // alert(isDeadActor);
-  }
+  // const isDeadActor = isActorDead(documentX);
+  // if (isDeadActor) {
+  //   // alert(isDeadActor);
+  // }
 
   // console.log({ isDeadActor });
 
   const BIRTH_INFO_SELECTOR =
-    'section.ipc-page-section.ipc-page-section--base > div > ul > li:nth-child(1) > div > div > div';
+    'section[data-testid="PersonalDetails"] ul > li:nth-child(3)';
 
   const info = {};
-  const infoElement = documentX.querySelector(BIRTH_INFO_SELECTOR);
+  const infoElement = document.querySelector(BIRTH_INFO_SELECTOR);
+  if (infoElement.firstElementChild.textContent !== 'Born') {
+    alert('No valid date present');
+    return;
+  }
+
+  // console.log(infoElement);
   try {
     const [birthDate, birthDateText] = extractDate(infoElement);
     info.birthDate = birthDate;
@@ -166,7 +176,7 @@ function addIsDeadStyle() {
 }
 
 async function main() {
-  const actorID = getActorID(window.location.href);
+  // const actorID = getActorID(window.location.href);
   const {
     birthDate,
     birthDateText,
@@ -175,7 +185,7 @@ async function main() {
     // deathDate,
     // deathDateText,
     // deathPlace,
-  } = await getActorInfo(actorID);
+  } = await getActorInfo();
   const age = getAge(birthDate);
   console.log({ age });
 
